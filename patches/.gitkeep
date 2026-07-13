@@ -1,0 +1,4 @@
+patches/ — 集成补丁目录。
+
+安装时 install.py 将 Alaya 管道章节注入现有 skill 文件。
+此目录保留用于未来的平台适配补丁。
