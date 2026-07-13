@@ -132,7 +132,7 @@ def install_skill():
     # HanaAgent: copy SKILL.md to skills directory
     # Other platforms: follow PORTING.md instead
     if not SKILLS_DIR.exists() or ".hanako" not in str(SKILLS_DIR):
-        return f"⏭ 非 HanaAgent 平台，跳过。请参考 PORTING.md 手动配置。"
+        return f"⏭  Non-HanaAgent platform, skipped. See PORTING.md. / 非 HanaAgent 平台，跳过。参考 PORTING.md。"
     skill_dir = SKILLS_DIR / "dopagent"
     skill_dir.mkdir(parents=True, exist_ok=True)
     src = PROJECT_ROOT / "SKILL.md"
