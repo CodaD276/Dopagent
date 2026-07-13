@@ -30,56 +30,6 @@ After installation you're at **L1**. L0-L3 run automatically. L4-L5 activate whe
 
 ---
 
----
-
-## What This Skill Does
-
-Every time you correct your AI agent, it extracts the lesson, stores it in long-term memory, and surfaces it the next time it's relevant. Not by chance — by a retrieval algorithm that weights semantic similarity, recency, and importance.
-
-Memory alone isn't enough. The agent also needs to know **when to nudge you and when to stay quiet**. Dopagent runs four profiles — creative, execution, exploration, recovery — and switches between them based on your conversational state. Deep in architecture discussion at 2 AM? Creative mode. Said "I don't feel like doing anything" three times in a row? Recovery mode — a single 30-second micro-option, zero pressure.
-
-Everything runs locally. Python stdlib, zero external dependencies. The learning pipeline starts the moment you correct the agent.
-
-> ⚠️ Dopagent Check is an LLM reasoning step — the agent makes a best effort each turn, but there is no program-level enforcement. The framework's reliability comes from the correction loop (correct→retain→Alaya recall). The motivation engine is an assistive layer.
-
-## Why "Dopagent"
-
-I have ADHD.
-
-Dopamine is my operating system. A task doesn't get started because it's important — it gets started because it's *interesting*. The boring stuff sinks. The stimulating stuff floats. It's not laziness. It's a different scheduling algorithm.
-
-This framework's motivation engine is built on exactly that logic:
-
-- **Hot storage** = your brain's workbench. Interesting things float to the top. Uninteresting things slowly cool down and sink. They're not deleted — just not in your face right now.
-- **Cold storage** = long-term memory. The truly important stuff crystallizes there, uncontaminated by whatever feels fun in the moment.
-- **Correction as learning** = when you say "no, it should be X not Y" — that's the strongest learning signal there is. No need to explicitly say "remember this." The correction *is* the "remember this."
-- **Four profiles** = ADHD is not one state. Late-night hyperfocus and scattered daytime attention are completely different cognitive modes. The agent has to learn the difference.
-
-Put simply: I gave my agent an external prefrontal cortex. It won't cure ADHD. But it remembers things when I forget, recognizes when I'm stuck and need to pivot, and puts the most important task in front of me when I'm actually ready to do it.
-
-## Prerequisites
-
-| Dependency | Required | Notes |
-|---|---|---|
-| Python 3.10+ | ✅ | stdlib only — no pip install needed |
-| curl | ✅ | HTTP calls to Hindsight API |
-| Hindsight daemon | ✅ | Long-term memory backend, default :9177 |
-| HanaAgent | ✅ | Skill loading + Pinned Memory + Agent runtime |
-| 5 minutes | ✅ | Edit two paths + run one command |
-
-Zero external Python dependencies:
-
-```
-scripts/
-  alaya_rerank.py   → json, math, datetime, sys      (stdlib only)
-  alaya_recall.py   → json, subprocess, tempfile, sys  (stdlib only)
-  hotness.py        → json, pathlib, re, datetime, sys (stdlib only)
-
-System: curl (Hindsight HTTP API)
-```
-
-**Dev & Test Environment**: Windows 11 · HanaAgent · Hindsight
-
 ## Quick Start
 
 ```bash
@@ -126,17 +76,49 @@ After install, try this — see all four circuits in action:
 
 Four circuits, one flow: correction → storage → retrieval → hot storage lifecycle.
 
-```
-Three new Agent capabilities:
+---
 
-· Correct the Agent → lessons auto-extracted, stored in long-term memory
-· "Do you remember..." → Alaya rerank surfaces the most relevant memories
-· Hot storage → short-term high-frequency memory auto-managed (float / sink)
+## What This Skill Does
 
-Dopagent motivation engine (opt-in):
-· Four profiles — creative / execution / exploration / recovery
-· Agent senses your state, decides whether to push, wait, or pivot
+Your AI agent automatically extracts lessons from every correction and stores them in long-term memory. Next time a similar scenario comes up, the most relevant experience surfaces — not by luck, by a retrieval algorithm.
+
+Memory alone isn't enough. The agent also needs to know **when to nudge you and when to stay quiet**. Dopagent runs four profiles — creative, execution, exploration, recovery — switching based on your state.
+
+Everything runs locally. Python stdlib, zero external dependencies.
+
+> ⚠️ Dopagent Check is an LLM reasoning step — the agent makes a best effort each turn, but there is no program-level enforcement. The framework's reliability comes from the correction loop (correct→retain→Alaya recall). The motivation engine is an assistive layer.
+
+## Why "Dopagent"
+
+I have ADHD. Dopamine is my operating system. A task doesn't get started because it's important — it gets started because it's *interesting*. The boring stuff sinks. The stimulating stuff floats.
+
+- **Hot storage** = your brain's workbench. Interesting floats; uninteresting sinks
+- **Cold storage** = long-term memory. Important stays; fun-of-the-moment doesn't pollute it
+- **Correction as learning** = "No, it should be X not Y" — the strongest learning signal
+- **Four profiles** = ADHD is not one state. Late-night hyperfocus ≠ scattered daytime attention
+
+Put simply: an external prefrontal cortex for your AI assistant.
+
+## Prerequisites
+
+| Dependency | Required | Notes |
+|---|---|---|
+| Python 3.10+ | ✅ | stdlib only — no pip install |
+| curl | ✅ | HTTP calls to Hindsight API |
+| Hindsight daemon | ✅ | Long-term memory backend, default :9177 |
+| HanaAgent | ✅ | Skill loading + Pinned Memory + Agent runtime |
+| 5 minutes | ✅ | Edit two paths + run one command |
+
 ```
+scripts/
+  alaya_rerank.py   → json, math, datetime, sys      (stdlib only)
+  alaya_recall.py   → json, subprocess, tempfile, sys  (stdlib only)
+  hotness.py        → json, pathlib, re, datetime, sys (stdlib only)
+
+System: curl (Hindsight HTTP API)
+```
+
+**Dev & Test Environment**: Windows 11 · HanaAgent · Hindsight
 
 ## Architecture
 
@@ -171,14 +153,6 @@ graph LR
     style PM fill:#1e3a5f,stroke:#60a5fa,color:#bfdbfe
 ```
 
-## Portability
-
-→ [Porting to other platforms](PORTING.md) — Claude Code, Cursor, Copilot, Codex, Windsurf, OpenClaw
-
-## Roadmap
-
-→ [Architecture overview](ROADMAP.md) — completion status and next priorities
-
 ## License
 
 MIT
@@ -192,3 +166,6 @@ MIT
 - **Symbolic distillation notation** — Adapted from [TencentDB Agent Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory)
 - **Hindsight** — Long-term memory backend (MIT)
 - **Alaya naming** — Sanskrit *ālaya-vijñāna* (storehouse consciousness), also used by [SecurityRonin/alaya](https://github.com/SecurityRonin/alaya) (MIT)
+
+→ [Porting to other platforms](PORTING.md)
+→ [Architecture overview](ROADMAP.md)
