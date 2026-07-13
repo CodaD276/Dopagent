@@ -2,6 +2,8 @@
 
 AI 助手自我学习框架。Alaya 检索重排 + 三层记忆 + 纠正自动学习 + Dopagent 动机引擎。
 
+[English](README_EN.md)
+
 ## 前置条件
 
 | 依赖 | 必需 | 说明 |
