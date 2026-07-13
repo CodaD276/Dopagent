@@ -1,5 +1,73 @@
 # Dopagent · Architecture Overview / 架构快照
 
+## Architecture Topology / 架构拓扑
+
+```mermaid
+graph TD
+    subgraph L5["L5 · Meta-Learning / 元学习"]
+        AUDIT["Audit Engine 审计引擎"]
+        DISTILL["Symbolic Distill 符号蒸馏"]
+        SAFETY["Safety Gates 安全栅"]
+    end
+
+    subgraph L4["L4 · Pattern Extraction / 模式提炼"]
+        HOT2WARM["Hot → Warm 热→温"]
+        WARM2COLD["Warm → Cold 温→冷"]
+        GENERALIZE["Generalize 泛化"]
+    end
+
+    subgraph L3["L3 · Execution / 执行层"]
+        PROFILES["4 Profiles 四模式"]
+        PROPOSE["Propose 吸引力提议"]
+        SWITCH["Auto Switch 自动切换"]
+    end
+
+    subgraph L2["L2 · Dopagent Check / 动机检测"]
+        DCHECK["Dopagent Check 状态感知"]
+        LAMBDA["λ Monitor 衰减监控"]
+        SIGNALS["Signal Detectors 信号检测"]
+    end
+
+    subgraph L1["L1 · Bootstrap / 安装引导"]
+        INSTALL["install.py"]
+        SKILL["SKILL.md"]
+        CONFIG["config_example.py"]
+        PORTING["PORTING.md 6 platforms"]
+    end
+
+    subgraph L0["L0 · Infrastructure / 基础设施"]
+        ALAYA["Alaya Pipeline 检索管道"]
+        HOT["Hot Storage 热存储"]
+        COLD["Hindsight 冷存储"]
+        TEMPLATE["Correction Template 纠正模板"]
+    end
+
+    subgraph EXT["External / 外部依赖"]
+        HINDSIGHT["Hindsight API :9177"]
+        HANA["HanaAgent"]
+        CURL["curl"]
+    end
+
+    L0 --> L1 --> L2 --> L3 --> L4 --> L5
+    ALAYA --> HINDSIGHT
+    COLD --> HINDSIGHT
+    SKILL --> HANA
+    DCHECK --> HOT
+    PROFILES --> PROPOSE
+    HOT2WARM --> GENERALIZE
+    GENERALIZE --> AUDIT
+    AUDIT --> DISTILL
+    SAFETY --> SKILL
+
+    style L0 fill:#1a3a1a,stroke:#4a4
+    style L1 fill:#1a3a1a,stroke:#4a4
+    style L2 fill:#1a3a1a,stroke:#4a4
+    style L3 fill:#1a3a1a,stroke:#4a4
+    style L4 fill:#2a2a1a,stroke:#aa4
+    style L5 fill:#2a1a2a,stroke:#a4a
+    style EXT fill:#1a2a3a,stroke:#48a
+```
+
 ## Completion Status / 完成度总览
 
 ```
