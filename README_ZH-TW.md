@@ -50,6 +50,8 @@ scripts/
 系統工具: curl（呼叫 Hindsight HTTP API）
 ```
 
+**開發與驗證環境**：Windows 11 · HanaAgent · Hindsight
+
 ## 快速開始
 
 ```bash

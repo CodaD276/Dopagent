@@ -50,6 +50,8 @@ scripts/
 System: curl (Hindsight HTTP API)
 ```
 
+**Dev & Test Environment**: Windows 11 · HanaAgent · Hindsight
+
 ## Quick Start
 
 ```bash
