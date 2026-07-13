@@ -188,7 +188,7 @@ MIT
 A: 检查 Hindsight 是否运行：`curl http://127.0.0.1:9177/health`。没启动就先启动 Hindsight daemon。
 
 **Q: recall 超时？**  
-A: Hindsight 的本地嵌入模型首次查询较慢（30-90 秒）。后续查询会快一些。如果持续超时，用 `--budget low` 缩小检索范围。
+A: Hindsight 的本地嵌入模型首次查询较慢（30-90 秒）。后续查询会快一些。如果持续超时，检查 Hindsight 是否负载过高（是否有其他进程在大量读写）。
 
 **Q: 我需要理解 Hindsight 或 Alaya 的原理吗？**  
 A: 不需要。纠正 Agent → 自动学习。原理对日常使用透明。

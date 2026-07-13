@@ -186,7 +186,7 @@ MIT
 A: Check Hindsight is running: `curl http://127.0.0.1:9177/health`. Start the Hindsight daemon if it's not.
 
 **Q: Recall times out?**  
-A: Hindsight's local embedding model is slow on first query (30-90s). Subsequent queries are faster. Use `--budget low` for smaller scope.
+A: Hindsight's local embedding model is slow on first query (30-90s). Subsequent queries are faster. If it keeps timing out, check if Hindsight is overloaded by other processes.
 
 **Q: Do I need to understand Hindsight or Alaya?**  
 A: No. Correct the agent → auto-learning. The internals are transparent in daily use.
