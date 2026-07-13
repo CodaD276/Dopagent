@@ -95,7 +95,34 @@ python install.py
 # The Agent will self-bootstrap — pin instincts, verify the pipeline.
 ```
 
-## What You Get
+## 5-Minute Walkthrough
+
+After install, try this — see all four circuits in action:
+
+```
+👤 User:   "Shenzhen is in Guangdong, not Guangxi."
+           (← a correction, but you didn't say "remember this")
+
+🤖 Agent:  Detects correction signal → auto-fills template:
+
+           Correction Template:
+           · I was wrong: confused province
+           · Correct: Shenzhen = Guangdong city
+           · Next time: verify Chinese geography first
+
+           → retain to Hindsight (imp:8)
+           → add to Hot Storage [correction]
+           → hotness.py sort → floats to ACTIVE top
+
+👤 User:   (3 days later) "Did I correct you about geography before?"
+
+🤖 Agent:  python alaya_recall.py "geography correction"
+           → Alaya formula: semantic + time decay + importance
+           → "Shenzhen in Guangdong" ranks #1
+           → "Yes, on July 13 you corrected me about Shenzhen."
+```
+
+Four circuits, one flow: correction → storage → retrieval → hot storage lifecycle.
 
 ```
 Three new Agent capabilities:
