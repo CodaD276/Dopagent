@@ -1,32 +1,8 @@
 # Dopagent
 
-An AI agent that learns from your corrections — Alaya retrieval rerank, 3-tier memory, correction autolearn, and ADHD-optimized motivation engine.
+An AI agent that learns from your corrections
 
 [简体中文](README.md) · [繁體中文](README_ZH-TW.md)
-
----
-
-## Architecture Layers / 架构层次
-
-After installation you're at **L1**. L0-L3 run automatically. L4-L5 activate when enough data accumulates.
-
-| Layer | Name | Status | Trigger |
-|---|---|---|---|
-| **L0** | Infrastructure · Alaya + Hot/Cold Storage | ✅ Auto | Runs on install |
-| **L1** | Bootstrap · install.py + 6-platform porting | ✅ Auto | `python install.py` |
-| **L2** | Dopagent Check · State sensing + λ monitor | ✅ Auto | Every response |
-| **L3** | Execution · 4 profiles + Propose | ✅ Auto | Triggered by L2 |
-| **L4** | Pattern Extraction · Lesson → Generalization | 🚧 Needs data | Auto after 50+ corrections |
-| **L5** | Meta-Learning · Symbolic Distill + Audit | 📐 Spec ready | Auto after L4 output |
-
-**Optional** (manual opt-in):
-
-| Feature | Description | How to enable |
-|---|---|---|
-| Correction Verify | Cheap LLM double-checks extracted lessons | Say "开启纠正验证" / "enable correction verify" |
-| Engagement Signal | Detects sustained interest in a topic | Say "开启 engagement 检测" / "enable engagement detection" |
-
-→ [Full topology + completion status](ROADMAP.md)
 
 ---
 
@@ -111,6 +87,30 @@ System: curl (Hindsight HTTP API)
 ```
 
 **Dev & Test Environment**: Windows 11 · HanaAgent · Hindsight
+
+## Architecture Layers / 架构层次
+
+After installation you're at **L1**. L0-L3 run automatically. L4-L5 activate when enough data accumulates.
+
+| Layer | Name | Status | Trigger |
+|---|---|---|---|
+| **L0** | Infrastructure · Alaya + Hot/Cold Storage | ✅ Auto | Runs on install |
+| **L1** | Bootstrap · install.py + 6-platform porting | ✅ Auto | `python install.py` |
+| **L2** | Dopagent Check · State sensing + λ monitor | ✅ Auto | Every response |
+| **L3** | Execution · 4 profiles + Propose | ✅ Auto | Triggered by L2 |
+| **L4** | Pattern Extraction · Lesson → Generalization | 🚧 Needs data | Auto after 50+ corrections |
+| **L5** | Meta-Learning · Symbolic Distill + Audit | 📐 Spec ready | Auto after L4 output |
+
+**Optional** (manual opt-in):
+
+| Feature | Description | How to enable |
+|---|---|---|
+| Correction Verify | Cheap LLM double-checks extracted lessons | Say "开启纠正验证" / "enable correction verify" |
+| Engagement Signal | Detects sustained interest in a topic | Say "开启 engagement 检测" / "enable engagement detection" |
+
+→ [Full topology + completion status](ROADMAP.md)
+
+---
 
 ## What This Skill Does
 
