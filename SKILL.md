@@ -16,7 +16,7 @@ default-enabled: true
 如果这是本 skill 第一次被加载：
 
 1. 检查 pinned memory 是否已有以下 instincts。如果没有，逐条 pin：
-   - `Hindsight recall → python C:\Users\PC\Desktop\OH-WorkSpace/alaya_recall.py "查询"（禁止裸 curl）。公式: 1.2×semantic + 0.3×exp(-0.005×days) + 0.1×(importance/10)，importance 默认 5。`
+   - `Hindsight recall → python $WORKSPACE/alaya_recall.py "查询"（禁止裸 curl）。公式: 1.2×semantic + 0.3×exp(-0.005×days) + 0.1×(importance/10)，importance 默认 5。`
    - `被 User 纠正时自动执行：提取教训 → 填纠正模板 → retain 到 Hindsight (imp:8) → 回复中展示。模板: User说了什么 / Agent错在哪 / 正确理解 / 适用场景(下次遇到X→应该Y) / 元模式(可选泛化原则)。`
 
 2. 检查 `hot_memory.md` 是否存在于 WORKSPACE。如果不存在，提示 User 运行 `python install.py`。
@@ -117,11 +117,11 @@ Python 管机械排序（hotness.py），LLM 管状态感知。
 
 | 触发 | 命令 |
 |---|---|
-| recall | `python C:\Users\PC\Desktop\OH-WorkSpace/alaya_recall.py "查询" --budget mid` |
-| 热存储排序 | `python C:\Users\PC\Desktop\OH-WorkSpace/hotness.py sort` |
-| 热存储检查 | `python C:\Users\PC\Desktop\OH-WorkSpace/hotness.py check` |
-| 热存储新增 | `python C:\Users\PC\Desktop\OH-WorkSpace/hotness.py add` |
-| λ 监控 | `python C:\Users\PC\Desktop\OH-WorkSpace/hotness.py tune` |
+| recall | `python $WORKSPACE/alaya_recall.py "查询" --budget mid` |
+| 热存储排序 | `python $WORKSPACE/hotness.py sort` |
+| 热存储检查 | `python $WORKSPACE/hotness.py check` |
+| 热存储新增 | `python $WORKSPACE/hotness.py add` |
+| λ 监控 | `python $WORKSPACE/hotness.py tune` |
 | 显式纠正 | 填模板 → Hindsight retain (imp:8) → 热存储 add |
 
 ## 三层记忆架构

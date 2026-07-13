@@ -2,7 +2,7 @@
 
 An AI agent that learns from your corrections — Alaya retrieval rerank, 3-tier memory, correction autolearn, and ADHD-optimized motivation engine.
 
-[中文版](README.md)
+[简体中文](README.md) · [繁體中文](README_ZH-TW.md)
 
 ---
 
