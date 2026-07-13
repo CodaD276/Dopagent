@@ -127,14 +127,18 @@ def patch_hindsight_skill():
     return "Alaya 章节已注入 ✅"
 
 
-@step("安装 Skill 到 HanaAgent")
+@step("安装 Skill 到 Agent 平台")
 def install_skill():
+    # HanaAgent: copy SKILL.md to skills directory
+    # Other platforms: follow PORTING.md instead
+    if not SKILLS_DIR.exists() or ".hanako" not in str(SKILLS_DIR):
+        return f"⏭ 非 HanaAgent 平台，跳过。请参考 PORTING.md 手动配置。"
     skill_dir = SKILLS_DIR / "dopagent"
     skill_dir.mkdir(parents=True, exist_ok=True)
     src = PROJECT_ROOT / "SKILL.md"
     dest = skill_dir / "SKILL.md"
     shutil.copy(src, dest)
-    return f"SKILL.md → {skill_dir} ✅ 新会话自动加载"
+    return f"SKILL.md → {skill_dir} ✅ 新会话自动加载（HanaAgent）"
 
 
 @step("验证 Alaya 管道")
