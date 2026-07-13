@@ -83,8 +83,8 @@ default-enabled: true
 
 ## 可选增强（默认关闭）
 
-- **Session Retro**：User 说"记一下今晚的"→ 提取触发/状态轨迹/产出/洞察/情绪弧线 → retain imp:7
-- **纠正验证**：User 说"开启纠正验证"→ 纠正后调廉价 LLM 检查提取是否准确。Agent 决定何时启用
-- **Engagement 检测**：User 说"开启 engagement 检测"→ 同一话题 ≥3 轮 → 等空隙提议深潜
+- **Session Retro**：说"记一下今晚的" / "retain session" → 提取触发/状态轨迹/产出/洞察/情绪弧线 → retain imp:7
+- **纠正验证**：说"开启纠正验证" / "enable correction verify" → 纠正后调廉价 LLM 检查提取是否准确。Agent 决定何时启用
+- **Engagement 检测**：说"开启 engagement 检测" / "enable engagement detection" → 同一话题 ≥3 轮 → 等空隙提议深潜
 
 → 完整设计文档：[ROADMAP.md]($WORKSPACE/../ROADMAP.md) · [L5_SPEC.md]($WORKSPACE/../L5_SPEC.md)

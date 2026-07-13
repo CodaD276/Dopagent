@@ -23,8 +23,8 @@ After installation you're at **L1**. L0-L3 run automatically. L4-L5 activate whe
 
 | Feature | Description | How to enable |
 |---|---|---|
-| Correction Verify | Cheap LLM double-checks extracted lessons | Say "enable correction verify" |
-| Engagement Signal | Detects sustained interest in a topic | Say "enable engagement detection" |
+| Correction Verify | Cheap LLM double-checks extracted lessons | Say "开启纠正验证" / "enable correction verify" |
+| Engagement Signal | Detects sustained interest in a topic | Say "开启 engagement 检测" / "enable engagement detection" |
 
 → [Full topology + completion status](ROADMAP.md)
 
