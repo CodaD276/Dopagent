@@ -38,7 +38,9 @@ Every time you correct your AI agent, it extracts the lesson, stores it in long-
 
 Memory alone isn't enough. The agent also needs to know **when to nudge you and when to stay quiet**. Dopagent runs four profiles — creative, execution, exploration, recovery — and switches between them based on your conversational state. Deep in architecture discussion at 2 AM? Creative mode. Said "I don't feel like doing anything" three times in a row? Recovery mode — a single 30-second micro-option, zero pressure.
 
-Everything runs locally. Python stdlib, zero external dependencies. The learning pipeline starts spinning the moment you correct the agent.
+Everything runs locally. Python stdlib, zero external dependencies. The learning pipeline starts the moment you correct the agent.
+
+> ⚠️ Dopagent Check is an LLM reasoning step — the agent makes a best effort each turn, but there is no program-level enforcement. The framework's reliability comes from the correction loop (correct→retain→Alaya recall). The motivation engine is an assistive layer.
 
 ## Why "Dopagent"
 
