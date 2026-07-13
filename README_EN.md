@@ -6,6 +6,32 @@ An AI agent that learns from your corrections — Alaya retrieval rerank, 3-tier
 
 ---
 
+## Architecture Layers / 架构层次
+
+After installation you're at **L1**. L0-L3 run automatically. L4-L5 activate when enough data accumulates.
+
+| Layer | Name | Status | Trigger |
+|---|---|---|---|
+| **L0** | Infrastructure · Alaya + Hot/Cold Storage | ✅ Auto | Runs on install |
+| **L1** | Bootstrap · install.py + 6-platform porting | ✅ Auto | `python install.py` |
+| **L2** | Dopagent Check · State sensing + λ monitor | ✅ Auto | Every response |
+| **L3** | Execution · 4 profiles + Propose | ✅ Auto | Triggered by L2 |
+| **L4** | Pattern Extraction · Lesson → Generalization | 🚧 Needs data | Auto after 50+ corrections |
+| **L5** | Meta-Learning · Symbolic Distill + Audit | 📐 Spec ready | Auto after L4 output |
+
+**Optional** (manual opt-in):
+
+| Feature | Description | How to enable |
+|---|---|---|
+| Correction Verify | Cheap LLM double-checks extracted lessons | Say "enable correction verify" |
+| Engagement Signal | Detects sustained interest in a topic | Say "enable engagement detection" |
+
+→ [Full topology + completion status](ROADMAP.md)
+
+---
+
+---
+
 ## What This Skill Does
 
 Every time you correct your AI agent, it extracts the lesson, stores it in long-term memory, and surfaces it the next time it's relevant. Not by chance — by a retrieval algorithm that weights semantic similarity, recency, and importance.
@@ -85,21 +111,35 @@ Dopagent motivation engine (opt-in):
 
 ## Architecture
 
-```
-scripts/        Runnable tools
-  alaya_rerank.py    Alaya retrieval rerank engine
-  alaya_recall.py    recall + rerank in one
-  hotness.py         Hot storage scheduler (sort / check / tune)
+```mermaid
+graph LR
+    U["👤 User"] <-->|correct · query · state| A["🤖 Agent"]
 
-dopagent/       Motivation engine (design docs)
-  profiles/         creative / execution / exploration / recovery
-  signals/          correction / engagement / surfacing
-  propose.md        Attractive proposal template
+    A -->|"wrong"| CT["📝 Correction<br/>Template"]
+    CT -->|"retain imp:8"| H["❄️ Hindsight"]
+    CT -->|"add"| HOT["🔥 Hot Storage"]
 
-templates/      Data templates
-  hot_memory.md     Hot storage template (auto-initialized on install)
+    A -->|"remember?"| AL["🔍 Alaya Pipeline<br/>1.2×sem+0.3×decay+0.1×imp"]
+    AL -->|"query"| H
+    AL -->|"rerank"| A
 
-patches/        Integration patches (auto-applied on install)
+    A -->|"each turn"| PM["🧠 Profile Matcher<br/>creative/execution/explore/recover"]
+    PM --> DEC["Push · Wait · Switch"]
+    DEC -.->|"feedback"| A
+
+    HS["⚙️ Hotness<br/>Scheduler"] -->|sort/check| HOT
+    HOT -->|"promotion"| WARM["🌤️ Warm"] -->|"consolidation"| H
+
+    A --> RETRO["📋 Session Retro"]
+    RETRO -->|"retain imp:7"| H
+    RETRO -->|"insight"| HOT
+
+    style H fill:#4c1d95,stroke:#a78bfa,color:#e2e8f0
+    style HOT fill:#b45309,stroke:#fbbf24,color:#fef3c7
+    style WARM fill:#c2410c,stroke:#fb923c,color:#fed7aa
+    style CT fill:#9f1239,stroke:#fb7185,color:#fecdd3
+    style AL fill:#065f46,stroke:#34d399,color:#d1fae5
+    style PM fill:#1e3a5f,stroke:#60a5fa,color:#bfdbfe
 ```
 
 ## Portability
