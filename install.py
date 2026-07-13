@@ -127,6 +127,16 @@ def patch_hindsight_skill():
     return "Alaya 章节已注入 ✅"
 
 
+@step("安装 Skill 到 HanaAgent")
+def install_skill():
+    skill_dir = SKILLS_DIR / "dopagent"
+    skill_dir.mkdir(parents=True, exist_ok=True)
+    src = PROJECT_ROOT / "SKILL.md"
+    dest = skill_dir / "SKILL.md"
+    shutil.copy(src, dest)
+    return f"SKILL.md → {skill_dir} ✅ 新会话自动加载"
+
+
 @step("验证 Alaya 管道")
 def verify_alaya():
     alaya_script = PROJECT_ROOT / "scripts" / "alaya_rerank.py"
