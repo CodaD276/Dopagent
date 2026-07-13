@@ -85,7 +85,7 @@ python install.py
 | Python 3.10+ | ✅ | 全部標準庫，無需 pip install |
 | curl | ✅ | HTTP 呼叫 Hindsight API |
 | Hindsight daemon | ✅ | 長期記憶儲存，預設 :9177 |
-| HanaAgent | ✅ | Skill 載入 + Pinned Memory + Agent 宿主 |
+| Agent 平台 | 🟨 | HanaAgent 原生支援。其他平台參考 [移植指南](PORTING.md) |
 | 5 分鐘 | ✅ | 改兩個路徑 + 跑一條命令 |
 
 ```

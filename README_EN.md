@@ -85,7 +85,7 @@ Four circuits, one flow: correction → storage → retrieval → hot storage li
 | Python 3.10+ | ✅ | stdlib only — no pip install |
 | curl | ✅ | HTTP calls to Hindsight API |
 | Hindsight daemon | ✅ | Long-term memory backend, default :9177 |
-| HanaAgent | ✅ | Skill loading + Pinned Memory + Agent runtime |
+| Agent Platform | 🟨 | HanaAgent native. Others via [Porting Guide](PORTING.md) |
 | 5 minutes | ✅ | Edit two paths + run one command |
 
 ```
