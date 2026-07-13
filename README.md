@@ -77,5 +77,15 @@ patches/         集成补丁（安装时自动应用）
 
 MIT
 
+## 致谢
+
+- **Alaya 检索公式**（1.2×semantic + 0.3×time_decay + 0.1×emotion）  
+  源自 [moeru-ai/airi](https://github.com/moeru-ai/airi) 项目（MIT）的  
+  [Alaya 记忆层提案](https://github.com/moeru-ai/airi/issues/879)（@lvy010, 2026-01-05）
+- **Dopagent 动机引擎** — Instincts 概念启发自 [ECC](https://github.com/affaan-m/ECC)（MIT）
+- **符号蒸馏记法** — 参考 [TencentDB Agent Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory) 的符号化压缩思路
+- **Hindsight** — 长期记忆后端（MIT）
+- **Alaya 命名** — 梵语 *ālaya-vijñāna*（阿赖耶识），亦见于 [SecurityRonin/alaya](https://github.com/SecurityRonin/alaya)（MIT）
+
 → [移植到其他平台](PORTING.md)
 → [架构快照](ROADMAP.md)
