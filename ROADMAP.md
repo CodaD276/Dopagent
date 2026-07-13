@@ -1,69 +1,64 @@
-# Dopagent · 架构快照
+# Dopagent · Architecture Overview / 架构快照
 
-## 完成度总览
+## Completion Status / 完成度总览
 
 ```
-自我学习闭环     ████████████████░░░░  80%
- ① 检测          ████████             correction 信号 ✅
- ② 诊断          ████████             纠正模板已 pin ✅
- ③ 写入          ████████             Hindsight retain ✅
- ④ 检索          ████████             Alaya 管道 ✅
- ⑤ 泛化          ██░░░░░░             等数据量（需 50+ 纠正记录）
- ⑥ 元学习        ░░░░░░░░             研究级
+Self-Learning Loop / 自我学习闭环      ████████████████░░░░  80%
+ ① Detect / 检测                      ████████   correction signal ✅
+ ② Diagnose / 诊断                    ████████   correction template pinned ✅
+ ③ Write / 写入                       ████████   Hindsight retain ✅
+ ④ Retrieve / 检索                    ████████   Alaya pipeline ✅
+ ⑤ Generalize / 泛化                  ██░░░░░░   needs 50+ corrections
+ ⑥ Meta-learn / 元学习                ░░░░░░░░   research phase
 
-三层记忆         ██████████████░░░░  70%
- 热存储          ████████             hot_memory.md + hotness.py ✅
- 温存储          ██░░░░░░             hot→warm 提炼逻辑（设计完成，待实现）
- 冷存储          ████████             Hindsight + Alaya ✅
+3-Tier Memory / 三层记忆              ██████████████░░░░  70%
+ Hot / 热存储                         ████████   hot_memory.md + hotness.py ✅
+ Warm / 温存储                        ██░░░░░░   hot→warm promotion (designed)
+ Cold / 冷存储                        ████████   Hindsight + Alaya ✅
 
-Dopagent         ██████░░░░░░░░░░░░  30%
- profiles        ████░░░░             四个 profile 参数定义（设计中）
- signals         ████░░░░             correction ✅, engagement/surfacing 待实现
- propose         ██░░░░░░             提议模板（设计中）
- decision_fn     ░░░░░░░░             dopamine_score 函数（待实现）
+Dopagent Engine / 动机引擎             ██████░░░░░░░░░░░░  30%
+ profiles                              ████░░░░   designed
+ signals                               ████░░░░   correction ✅, engagement/surfacing pending
+ propose                                ██░░░░░░   template designed
+ decision_fn                            ░░░░░░░░   pending
 ```
 
-## 文件清单
+## File Tree / 文件清单
 
 ```
 dopagent/
-├── README.md              ← 人说读（待写）
-├── SKILL.md               ← Agent 入口（待写）
-├── install.py             ← 一键 Bootstrap（待写）
-├── ROADMAP.md             ← 本文件
+├── README.md / README_EN.md / README_ZH-TW.md
+├── SKILL.md               ← Agent entry / Agent 入口
+├── install.py             ← One-command bootstrap / 一键部署
+├── ROADMAP.md             ← This file / 本文件
+├── PORTING.md             ← Platform porting guide / 平台移植
+├── L5_SPEC.md             ← Meta-learning spec / 元学习规范
 │
-├── scripts/               ← ✅ 全部就绪
-│   ├── alaya_rerank.py    ← Alaya 公式引擎
-│   ├── alaya_recall.py    ← recall + 重排一体
-│   └── hotness.py         ← 热存储调度器
+├── scripts/               ✅ All ready
+│   ├── alaya_rerank.py    ← Alaya formula engine
+│   ├── alaya_recall.py    ← recall + rerank
+│   └── hotness.py         ← hot storage scheduler
 │
-├── dopagent/              ← 🚧 设计中
-│   ├── profiles/
-│   │   ├── creative.md    ← 创意模式参数
-│   │   ├── execution.md   ← 执行模式参数
-│   │   ├── exploration.md ← 探索模式参数
-│   │   └── recovery.md    ← 低能模式参数
-│   ├── signals/
-│   │   ├── correction.md  ← User 纠正检测（✅ 已 pin 为 instinct）
-│   │   ├── engagement.md  ← 话题粘性检测（待实现）
-│   │   └── surfacing.md   ← 反思/感悟检测（待实现）
-│   └── propose.md         ← 提议模板（待写）
+├── dopagent/              📐 Designed
+│   ├── profiles/          creative / execution / exploration / recovery
+│   ├── signals/           correction ✅ · engagement 🚧 · surfacing 🚧
+│   └── propose.md         attractive proposal template
 │
 ├── templates/
-│   └── hot_memory.md      ← 热存储模板 ✅
+│   └── hot_memory.md      ← clean template / 空模板
 │
 └── patches/
-    └── hindsight-hermes.py ← skill 增量修改（待写）
+    └── .gitkeep           ← integration patches / 集成补丁
 ```
 
-## 下一步优先级
+## Next Steps / 下一步
 
-1. ~~SKILL.md + install.py~~ ✅ L1 完成
-2. ~~快照脱敏~~ ✅ 零个人标识
-3. ~~L3：propose + profile 切换~~ ✅
-4. ~~README + config 层~~ ✅ 新用户可自举
-5. 纠正验证（optional，已设计）
-6. Engagement 信号（optional，已设计）
-7. 温存储提炼逻辑
-8. ~~L5 设计规范~~ ✅ L5_SPEC.md（符号蒸馏 + 审计引擎 + 安全栅 + 成本约束）
-9. 泛化 — 积累 50+ 纠正后跑 reflect
+1. ~~Bootstrap (SKILL.md + install.py)~~ ✅
+2. ~~Sanitization~~ ✅ zero personal identifiers
+3. ~~L3: Propose + Profile switching~~ ✅
+4. ~~README + config layer~~ ✅ self-bootstrapping
+5. Correction verification (optional, designed / 已设计)
+6. Engagement signal (optional, designed / 已设计)
+7. Warm storage promotion logic / 温存储提炼逻辑
+8. ~~L5 spec~~ ✅ L5_SPEC.md (symbolic distillation + audit + safety + cost)
+9. Generalization — needs 50+ corrections / 泛化 · 等 50+ 纠正记录
