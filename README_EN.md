@@ -169,3 +169,36 @@ MIT
 
 → [Porting to other platforms](PORTING.md)
 → [Architecture overview](ROADMAP.md)
+
+## Glossary
+
+| Term | One-liner |
+|---|---|
+| Hindsight | Local long-term memory service (port 9177). Stores corrections and mental models |
+| Alaya | Retrieval rerank script — ranks memories by semantic similarity + time decay + importance |
+| Hot Storage | `hot_memory.md` — short-term high-frequency memory, auto floats and sinks |
+| Warm Storage | Repeatedly validated patterns, pending promotion to long-term 🚧 planned |
+| λ (lambda) | Time decay coefficient, controls memory cooldown speed |
+
+## FAQ
+
+**Q: Nothing happens after install?**  
+A: Check Hindsight is running: `curl http://127.0.0.1:9177/health`. Start the Hindsight daemon if it's not.
+
+**Q: Recall times out?**  
+A: Hindsight's local embedding model is slow on first query (30-90s). Subsequent queries are faster. Use `--budget low` for smaller scope.
+
+**Q: Do I need to understand Hindsight or Alaya?**  
+A: No. Correct the agent → auto-learning. The internals are transparent in daily use.
+
+**Q: When will correction verify / engagement detection be available?**  
+A: 🚧 Design complete, implementation pending. The core loop (correct→retain→Alaya recall) is fully functional now.
+
+## Planned
+
+| Feature | Status |
+|---|---|
+| Warm storage promotion (hot→warm) | 📐 Designed, `hotness.py promote` pending |
+| Correction verify (verify.py) | 📐 Designed, pending |
+| Engagement signal | 📐 Designed, pending |
+| Cross-platform install scripts | 📐 PORTING.md covers, `install-{platform}.sh` pending |
