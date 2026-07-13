@@ -153,20 +153,6 @@ graph LR
     style PM fill:#1e3a5f,stroke:#60a5fa,color:#bfdbfe
 ```
 
-## License
-
-MIT
-
-## Acknowledgments
-
-- **Alaya retrieval formula** (1.2×semantic + 0.3×time_decay + 0.1×emotion)  
-  From [moeru-ai/airi](https://github.com/moeru-ai/airi) (MIT) —  
-  [Alaya memory layer proposal](https://github.com/moeru-ai/airi/issues/879) by @lvy010 (2026-01-05)
-- **Dopagent motivation engine** — Instincts concept inspired by [ECC](https://github.com/affaan-m/ECC) (MIT)
-- **Symbolic distillation notation** — Adapted from [TencentDB Agent Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory)
-- **Hindsight** — Long-term memory backend (MIT)
-- **Alaya naming** — Sanskrit *ālaya-vijñāna* (storehouse consciousness), also used by [SecurityRonin/alaya](https://github.com/SecurityRonin/alaya) (MIT)
-
 → [Porting to other platforms](PORTING.md)
 → [Architecture overview](ROADMAP.md)
 
@@ -202,3 +188,17 @@ A: 🚧 Design complete, implementation pending. The core loop (correct→retain
 | Correction verify (verify.py) | 📐 Designed, pending |
 | Engagement signal | 📐 Designed, pending |
 | Cross-platform install scripts | 📐 PORTING.md covers, `install-{platform}.sh` pending |
+
+## License
+
+MIT
+
+## Acknowledgments
+
+- **Alaya retrieval formula** (1.2×semantic + 0.3×time_decay + 0.1×emotion)  
+  From [moeru-ai/airi](https://github.com/moeru-ai/airi) (MIT) —  
+  [Alaya memory layer proposal](https://github.com/moeru-ai/airi/issues/879) by @lvy010 (2026-01-05)
+- **Dopagent motivation engine** — Instincts concept inspired by [ECC](https://github.com/affaan-m/ECC) (MIT)
+- **Symbolic distillation notation** — Adapted from [TencentDB Agent Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory)
+- **Hindsight** — Long-term memory backend (MIT)
+- **Alaya naming** — Sanskrit *ālaya-vijñāna* (storehouse consciousness), also used by [SecurityRonin/alaya](https://github.com/SecurityRonin/alaya) (MIT)

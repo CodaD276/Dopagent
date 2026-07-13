@@ -153,20 +153,6 @@ graph LR
     style PM fill:#1e3a5f,stroke:#60a5fa,color:#bfdbfe
 ```
 
-## 許可
-
-MIT
-
-## 致謝
-
-- **Alaya 檢索公式**（1.2×semantic + 0.3×time_decay + 0.1×emotion）  
-  源自 [moeru-ai/airi](https://github.com/moeru-ai/airi) 專案（MIT）的  
-  [Alaya 記憶層提案](https://github.com/moeru-ai/airi/issues/879)（@lvy010, 2026-01-05）
-- **Dopagent 動機引擎** — Instincts 概念啟發自 [ECC](https://github.com/affaan-m/ECC)（MIT）
-- **符號蒸餾記法** — 參考 [TencentDB Agent Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory) 的符號化壓縮思路
-- **Hindsight** — 長期記憶後端（MIT）
-- **Alaya 命名** — 梵語 *ālaya-vijñāna*（阿賴耶識），亦見於 [SecurityRonin/alaya](https://github.com/SecurityRonin/alaya)（MIT）
-
 → [移植到其他平台](PORTING.md)
 → [架構快照](ROADMAP.md)
 
@@ -202,3 +188,17 @@ A: 🚧 規劃設計完成，程式碼待實作。當前核心迴路（糾正→
 | 糾正驗證（verify.py） | 📐 設計完成，待實作 |
 | Engagement 信號 | 📐 設計完成，待實作 |
 | 跨平台安裝腳本 | 📐 PORTING.md 已覆蓋，`install-{platform}.sh` 待實作 |
+
+## 許可
+
+MIT
+
+## 致謝
+
+- **Alaya 檢索公式**（1.2×semantic + 0.3×time_decay + 0.1×emotion）  
+  源自 [moeru-ai/airi](https://github.com/moeru-ai/airi) 專案（MIT）的  
+  [Alaya 記憶層提案](https://github.com/moeru-ai/airi/issues/879)（@lvy010, 2026-01-05）
+- **Dopagent 動機引擎** — Instincts 概念啟發自 [ECC](https://github.com/affaan-m/ECC)（MIT）
+- **符號蒸餾記法** — 參考 [TencentDB Agent Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory) 的符號化壓縮思路
+- **Hindsight** — 長期記憶後端（MIT）
+- **Alaya 命名** — 梵語 *ālaya-vijñāna*（阿賴耶識），亦見於 [SecurityRonin/alaya](https://github.com/SecurityRonin/alaya)（MIT）
