@@ -78,27 +78,6 @@ Four circuits, one flow: correction → storage → retrieval → hot storage li
 
 ---
 
-## What This Skill Does
-
-Your AI agent automatically extracts lessons from every correction and stores them in long-term memory. Next time a similar scenario comes up, the most relevant experience surfaces — not by luck, by a retrieval algorithm.
-
-Memory alone isn't enough. The agent also needs to know **when to nudge you and when to stay quiet**. Dopagent runs four profiles — creative, execution, exploration, recovery — switching based on your state.
-
-Everything runs locally. Python stdlib, zero external dependencies.
-
-> ⚠️ Dopagent Check is an LLM reasoning step — the agent makes a best effort each turn, but there is no program-level enforcement. The framework's reliability comes from the correction loop (correct→retain→Alaya recall). The motivation engine is an assistive layer.
-
-## Why "Dopagent"
-
-I have ADHD. Dopamine is my operating system. A task doesn't get started because it's important — it gets started because it's *interesting*. The boring stuff sinks. The stimulating stuff floats.
-
-- **Hot storage** = your brain's workbench. Interesting floats; uninteresting sinks
-- **Cold storage** = long-term memory. Important stays; fun-of-the-moment doesn't pollute it
-- **Correction as learning** = "No, it should be X not Y" — the strongest learning signal
-- **Four profiles** = ADHD is not one state. Late-night hyperfocus ≠ scattered daytime attention
-
-Put simply: an external prefrontal cortex for your AI assistant.
-
 ## Prerequisites
 
 | Dependency | Required | Notes |
@@ -119,6 +98,27 @@ System: curl (Hindsight HTTP API)
 ```
 
 **Dev & Test Environment**: Windows 11 · HanaAgent · Hindsight
+
+## What This Skill Does
+
+Your AI agent automatically extracts lessons from every correction and stores them in long-term memory. Next time a similar scenario comes up, the most relevant experience surfaces — not by luck, by a retrieval algorithm.
+
+Memory alone isn't enough. The agent also needs to know **when to nudge you and when to stay quiet**. Dopagent runs four profiles — creative, execution, exploration, recovery — switching based on your state.
+
+Everything runs locally. Python stdlib, zero external dependencies.
+
+> ⚠️ Dopagent Check is an LLM reasoning step — the agent makes a best effort each turn, but there is no program-level enforcement. The framework's reliability comes from the correction loop (correct→retain→Alaya recall). The motivation engine is an assistive layer.
+
+## Why "Dopagent"
+
+I have ADHD. Dopamine is my operating system. A task doesn't get started because it's important — it gets started because it's *interesting*. The boring stuff sinks. The stimulating stuff floats.
+
+- **Hot storage** = your brain's workbench. Interesting floats; uninteresting sinks
+- **Cold storage** = long-term memory. Important stays; fun-of-the-moment doesn't pollute it
+- **Correction as learning** = "No, it should be X not Y" — the strongest learning signal
+- **Four profiles** = ADHD is not one state. Late-night hyperfocus ≠ scattered daytime attention
+
+Put simply: an external prefrontal cortex for your AI assistant.
 
 ## Architecture
 

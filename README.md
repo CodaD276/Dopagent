@@ -78,6 +78,27 @@ python install.py
 
 ---
 
+## 前置条件
+
+| 依赖 | 必需 | 说明 |
+|---|---|---|
+| Python 3.10+ | ✅ | 全部标准库，无需 pip install |
+| curl | ✅ | HTTP 调用 Hindsight API |
+| Hindsight daemon | ✅ | 长期记忆存储，默认 :9177 |
+| HanaAgent | ✅ | Skill 加载 + Pinned Memory + Agent 宿主 |
+| 5 分钟 | ✅ | 改两个路径 + 跑一条命令 |
+
+```
+scripts/
+  alaya_rerank.py   → json, math, datetime, sys      (stdlib only)
+  alaya_recall.py   → json, subprocess, tempfile, sys  (stdlib only)
+  hotness.py        → json, pathlib, re, datetime, sys (stdlib only)
+
+系统工具: curl（调用 Hindsight HTTP API）
+```
+
+**开发与验证环境**：Windows 11 · HanaAgent · Hindsight
+
 ## 这个 Skill 能做什么
 
 你的 AI 助手每次被你纠正之后，自动把教训存进长期记忆。下次遇到类似的场景，最相关的经验自己浮上来——不靠运气，靠一套检索重排算法。
@@ -100,27 +121,6 @@ python install.py
 - **四个 profile** = ADHD 不是只有一种状态。深夜 hyperfocus 和白天碎片时间完全不同
 
 说白了：给 AI 助手加了一层外部前额叶。
-
-## 前置条件
-
-| 依赖 | 必需 | 说明 |
-|---|---|---|
-| Python 3.10+ | ✅ | 全部标准库，无需 pip install |
-| curl | ✅ | HTTP 调用 Hindsight API |
-| Hindsight daemon | ✅ | 长期记忆存储，默认 :9177 |
-| HanaAgent | ✅ | Skill 加载 + Pinned Memory + Agent 宿主 |
-| 5 分钟 | ✅ | 改两个路径 + 跑一条命令 |
-
-```
-scripts/
-  alaya_rerank.py   → json, math, datetime, sys      (stdlib only)
-  alaya_recall.py   → json, subprocess, tempfile, sys  (stdlib only)
-  hotness.py        → json, pathlib, re, datetime, sys (stdlib only)
-
-系统工具: curl（调用 Hindsight HTTP API）
-```
-
-**开发与验证环境**：Windows 11 · HanaAgent · Hindsight
 
 ## 架构
 
