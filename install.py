@@ -74,7 +74,12 @@ def check_hindsight():
     )
     if "healthy" not in result.stdout:
         raise RuntimeError(
-            f"Hindsight 未运行（{HINDSIGHT_URL}）。请先启动 Hindsight daemon。"
+            f"Hindsight 未运行（{HINDSIGHT_URL}）。\n"
+            f"  启动命令（取决于安装方式）：\n"
+            f"  · HanaAgent 自带：在 HanaAgent 设置中检查 Hindsight 状态\n"
+            f"  · 独立安装：hindsight-embed start\n"
+            f"  验证：curl {HINDSIGHT_URL}/health\n"
+            f"  排查：参考 hindsight-docs skill"
         )
     return "Hindsight 健康 ✅"
 
@@ -100,6 +105,10 @@ def init_hot_memory():
 def patch_hindsight_skill():
     if not HINDSIGHT_SKILL.exists():
         return f"⚠️  {HINDSIGHT_SKILL} 不存在。如果使用其他 bank 名或 skill 名，请手动配置 Alaya 管道。跳过。"
+
+    print("\n  ⚠️  将修改 {HINDSIGHT_SKILL.name} 以注入 Alaya 管道。原文件备份为 .bak。按 Ctrl+C 跳过。")
+    bak = HINDSIGHT_SKILL.with_suffix('.md.bak')
+    shutil.copy(HINDSIGHT_SKILL, bak)
 
     content = HINDSIGHT_SKILL.read_text(encoding="utf-8")
 

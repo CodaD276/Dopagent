@@ -41,11 +41,24 @@ cp config_example.py config.py
 python install.py
 
 # 3. 引导 Agent
-# 在 HanaAgent 新会话中说：
+# 在 HanaAgent 聊天框中直接输入：
 # "加载 dopagent skill"
 #
-# Agent 会自动完成 bootstrap——pin instincts、验证管道。
+# （HanaAgent 通过对话指令加载 skill——
+#   输入后会读取 SKILL.md 并执行 bootstrap。）
 ```
+
+### 验证安装
+
+装完 30 秒确认一切正常：
+
+```
+1. 对 Agent 说一句明显错误的话，比如"深圳在广西"
+2. Agent 纠正你之后，说"你记不记得我刚才纠正了什么？"
+3. Agent 应该能召回刚才的纠正内容
+```
+
+纠正→记忆→检索——一整条回路，30 秒验证。
 
 ## 5 分钟 Walkthrough
 

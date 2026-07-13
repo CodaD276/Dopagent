@@ -6,11 +6,18 @@ Copy to config.py and edit the paths below.
 
 # Workspace directory — where hot_memory.md and scripts live
 # 工作区目录 — hot_memory.md 和脚本存放位置
-WORKSPACE = r"C:\Users\PC\Desktop\OH-WorkSpace"
+#
+# macOS:  /Users/你的用户名/你的工作区
+# Linux:  /home/你的用户名/你的工作区
+# Windows: C:\Users\你的用户名\Desktop\OH-WorkSpace
+WORKSPACE = r"填入你的工作区路径"
 
 # HanaAgent skills directory
 # HanaAgent skill 目录
-SKILLS_DIR = r"C:\Users\PC\.hanako\skills"
+#
+# macOS/Linux: ~/.hanako/skills
+# Windows:     C:\Users\你的用户名\.hanako\skills
+SKILLS_DIR = r"填入你的 skills 目录路径"
 
 # ──────────────────────────────────────
 # Below this line usually doesn't need changes

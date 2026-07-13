@@ -87,4 +87,4 @@ default-enabled: true
 - **纠正验证**：说"开启纠正验证" / "enable correction verify" → 纠正后调廉价 LLM 检查提取是否准确。Agent 决定何时启用
 - **Engagement 检测**：说"开启 engagement 检测" / "enable engagement detection" → 同一话题 ≥3 轮 → 等空隙提议深潜
 
-→ 完整设计文档：[ROADMAP.md]($WORKSPACE/../ROADMAP.md) · [L5_SPEC.md]($WORKSPACE/../L5_SPEC.md)
+→ 完整设计文档：[ROADMAP.md](https://github.com/CodaD276/Dopagent/blob/main/ROADMAP.md) · [L5_SPEC.md](https://github.com/CodaD276/Dopagent/blob/main/L5_SPEC.md)

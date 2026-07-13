@@ -41,11 +41,24 @@ cp config_example.py config.py
 python install.py
 
 # 3. Bootstrap the Agent
-# In a new HanaAgent session, say:
+# In a HanaAgent chat, type:
 # "load dopagent skill"
 #
-# The Agent will self-bootstrap — pin instincts, verify the pipeline.
+# (HanaAgent loads skills via chat commands —
+#  it will read SKILL.md and run the bootstrap.)
 ```
+
+### Verify Installation
+
+30-second smoke test:
+
+```
+1. Tell the Agent something obviously wrong, e.g. "Toronto is in Quebec"
+2. After it corrects you, say "do you remember what I just corrected?"
+3. The Agent should recall the correction
+```
+
+Correction → memory → retrieval — one loop, 30 seconds.
 
 ## 5-Minute Walkthrough
 
