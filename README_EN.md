@@ -52,15 +52,15 @@ python install.py
 After install, try this — see all four circuits in action:
 
 ```
-👤 User:   "Shenzhen is in Guangdong, not Guangxi."
+👤 User:   "Toronto is in Ontario, not Quebec."
            (← a correction, but you didn't say "remember this")
 
 🤖 Agent:  Detects correction signal → auto-fills template:
 
            Correction Template:
            · I was wrong: confused province
-           · Correct: Shenzhen = Guangdong city
-           · Next time: verify Chinese geography first
+           · Correct: Toronto = Ontario
+           · Next time: verify Canadian geography first
 
            → retain to Hindsight (imp:8)
            → add to Hot Storage [correction]
@@ -70,8 +70,8 @@ After install, try this — see all four circuits in action:
 
 🤖 Agent:  python alaya_recall.py "geography correction"
            → Alaya formula: semantic + time decay + importance
-           → "Shenzhen in Guangdong" ranks #1
-           → "Yes, on July 13 you corrected me about Shenzhen."
+           → "Toronto in Ontario" ranks #1
+           → "Yes, on July 13 you corrected me about Toronto."
 ```
 
 Four circuits, one flow: correction → storage → retrieval → hot storage lifecycle.
