@@ -2,21 +2,29 @@
 
 你的 AI 助手每次被你纠正后，自动把教训存进长期记忆。下次遇到类似场景，经验自己浮上来。
 
+[![Stars](https://img.shields.io/github/stars/CodaD276/Dopagent?style=flat)](https://github.com/CodaD276/Dopagent/stargazers)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](PORTING.md)
+
 [繁體中文](README_ZH-TW.md) · [English](README_EN.md)
+
+[快速开始](#快速开始) · [功能介绍](#这个-skill-能做什么) · [架构](#架构层次--architecture-layers) · [FAQ](#常见问题)
 
 ---
 
-## 这个 Skill 能做什么
+## 💡 这个 Skill 能做什么
 
-Agent 被纠正 → 自动提取教训 → 存进记忆库。下一次你说"你记不记得"，最相关的经验排在第一位——不靠运气，靠 Alaya 检索重排公式。
+> [!NOTE]
+> Agent 被纠正 → 自动提取教训 → 存进记忆库。下一次你说"你记不记得"，最相关的经验排在第一位。
 
 记性好了还不够。它知道**什么时候该推你一把、什么时候该闭嘴**——四个模式（创意/执行/探索/恢复）根据你的状态自动切换。
 
 全部跑在本地。Python 标准库，零外部依赖。
 
-> ⚠️ Dopagent Check 是 LLM 推理步骤——Agent 每轮尽力执行，但无程序级强制保障。框架的可靠性在纠正闭环（纠正→retain→Alaya 召回）上，动机引擎是辅助层。
+> [!WARNING]
+> Dopagent Check 是 LLM 推理步骤——Agent 每轮尽力执行，但无程序级强制保障。框架的可靠性在纠正闭环（纠正→retain→Alaya 召回）上，动机引擎是辅助层。
 
-## 快速开始
+## 🚀 快速开始
 
 ```bash
 # 1. 编辑配置——只需改两个路径
