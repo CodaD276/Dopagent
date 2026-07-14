@@ -8,7 +8,7 @@ An AI agent that learns from your corrections
 
 [简体中文](README.md) · [繁體中文](README_ZH-TW.md)
 
-[Quick Start](#quick-start) · [Features](#what-this-skill-does) · [Architecture](#architecture-layers--架構層次) · [FAQ](#faq)
+[Quick Start](#quick-start) · [Features](#what-this-skill-does) · [Architecture](#architecture-layers) · [FAQ](#faq)
 
 ---
 
@@ -105,7 +105,7 @@ System: curl (Hindsight HTTP API)
 
 **Dev & Test Environment**: Windows 11 · HanaAgent · Hindsight
 
-## Architecture Layers / 架构层次
+## Architecture Layers
 
 After installation you're at **L1**. L0-L3 run automatically. L4-L5 activate when enough data accumulates.
 

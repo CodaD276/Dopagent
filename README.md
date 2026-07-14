@@ -8,7 +8,7 @@
 
 [繁體中文](README_ZH-TW.md) · [English](README_EN.md)
 
-[快速开始](#快速开始) · [功能介绍](#这个-skill-能做什么) · [架构](#架构层次--architecture-layers) · [FAQ](#常见问题)
+[快速开始](#快速开始) · [功能介绍](#这个-skill-能做什么) · [架构](#架构层次) · [FAQ](#常见问题)
 
 ---
 
@@ -106,7 +106,7 @@ scripts/
 
 **开发与验证环境**：Windows 11 · HanaAgent · Hindsight
 
-## 架构层次 / Architecture Layers
+## 架构层次
 
 安装后你处在 **L1**。L0-L3 自动运行，L4-L5 等数据积累后自动激活。
 
