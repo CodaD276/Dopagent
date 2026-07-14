@@ -186,13 +186,13 @@ def sync_scripts():
             shutil.copy(src, dest)
             synced.append(fname)
 
-    # 替换 SKILL.md 中的 $WORKSPACE 占位符为实际路径
-    skill_md = PROJECT_ROOT / "SKILL.md"
-    if skill_md.exists():
-        content = skill_md.read_text(encoding="utf-8")
+    # 替换 SKILL.md 中的 $WORKSPACE 占位符为实际路径（仅在安装目标）
+    installed_skill = SKILLS_DIR / "dopagent" / "SKILL.md"
+    if installed_skill.exists():
+        content = installed_skill.read_text(encoding="utf-8")
         workspace_str = str(WORKSPACE)
         content = content.replace("$WORKSPACE", workspace_str)
-        skill_md.write_text(content, encoding="utf-8")
+        installed_skill.write_text(content, encoding="utf-8")
         synced.append("SKILL.md (路径已注入)")
 
     return f"已同步 {', '.join(synced)} ✅"
