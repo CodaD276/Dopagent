@@ -200,7 +200,7 @@ A: 🚧 规划设计完成，代码待实现。当前核心回路（纠正→ret
 | 温存储提炼（hot→warm） | ✅ `hotness.py promote` 自动 retain 到 Hindsight |
 | 纠正验证（verify.py） | ✅ 就绪，需配置 VERIFY_LLM_API_KEY |
 | Engagement 信号 | ✅ 已嵌入 SKILL.md，LLM 原生检测 |
-| 跨平台安装脚本 | 📐 PORTING.md 已覆盖，待实现 |
+| 跨平台安装脚本 | ✅ `cross-install.py` 支持 6 个平台（Claude/Cursor/Copilot/Codex/Windsurf/OpenClaw） |
 
 ## 许可
 

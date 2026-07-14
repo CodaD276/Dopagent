@@ -197,10 +197,10 @@ A: 🚧 規劃設計完成，程式碼待實作。當前核心迴路（糾正→
 
 | 功能 | 狀態 |
 |---|---|
-| 溫儲存提煉（hot→warm） | 📐 設計完成，`hotness.py promote` 待實作 |
-| 糾正驗證（verify.py） | 📐 設計完成，待實作 |
-| Engagement 信號 | 📐 設計完成，待實作 |
-| 跨平台安裝腳本 | 📐 PORTING.md 已覆蓋，`install-{platform}.sh` 待實作 |
+| 溫儲存提煉（hot→warm） | ✅ `hotness.py promote` 自動 retain 到 Hindsight |
+| 糾正驗證（verify.py） | ✅ 就緒，需配置 VERIFY_LLM_API_KEY |
+| Engagement 信號 | ✅ 已嵌入 SKILL.md，LLM 原生檢測 |
+| 跨平台安裝腳本 | ✅ `cross-install.py` 支援 6 個平台 |
 
 ## 許可
 
