@@ -77,18 +77,19 @@ Self-Learning Loop / 自我学习闭环      ███████████�
  ③ Write / 写入                       ████████   Hindsight retain ✅
  ④ Retrieve / 检索                    ████████   Alaya pipeline ✅
  ⑤ Generalize / 泛化                  ██░░░░░░   needs 50+ corrections
- ⑥ Meta-learn / 元学习                ░░░░░░░░   research phase
+ ⑥ Meta-learn / 元学习                📐         L5_SPEC.md 设计完成
 
 3-Tier Memory / 三层记忆              ██████████████░░░░  70%
  Hot / 热存储                         ████████   hot_memory.md + hotness.py ✅
- Warm / 温存储                        ██░░░░░░   hot→warm promotion (designed)
+ Warm / 温存储                        ░░░░░░░░   designed, pending implementation
  Cold / 冷存储                        ████████   Hindsight + Alaya ✅
 
-Dopagent Engine / 动机引擎             ██████░░░░░░░░░░░░  30%
- profiles                              ████░░░░   designed
- signals                               ████░░░░   correction ✅, engagement/surfacing pending
- propose                                ██░░░░░░   template designed
- decision_fn                            ░░░░░░░░   pending
+Dopagent Engine / 动机引擎             ██████████████░░░░  70%
+ Profiles (4 modes)                   ████████   ✅ embedded in SKILL.md
+ Propose template                     ████████   ✅ embedded in SKILL.md
+ Profile switching                    ████████   ✅ Dopagent Check auto-switch
+ Signals (engagement/surfacing)       ░░░░░░░░   designed, optional enhancement
+ Correction verify                    ░░░░░░░░   designed, optional enhancement
 ```
 
 ## File Tree / 文件清单
