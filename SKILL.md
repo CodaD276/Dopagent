@@ -11,13 +11,26 @@ default-enabled: true
 
 # Dopagent
 
+## 变量解析
+
+- `$WORKSPACE` = config.py 中的 WORKSPACE 值——alaya_recall.py、hotness.py、hot_memory.md 所在目录
+- 如果 `hot_memory.md` 不在 `$WORKSPACE` → 提示 User 运行 `python install.py`
+
+## 输出边界（硬规则）
+
+Dopagent Check 的所有字段（时间、条目数、意图、profile、推/等/换、自检、比例）、纠正模板的五字段——均为 Agent 内部推理。**任何字段名或数值不得出现在面向用户的回复中。**
+
+Check 结果仅通过回复语气/节奏间接体现：execution → 拆步骤报进度。recovery → 不推任务。等 → 不追加新任务。推 → 用 propose 模板。
+
+纠正后用户只看到简短确认（如"记住了 ✅"），不看到模板内容。
+
 ## Bootstrap（首次激活）
 
 如果是本 skill 第一次加载：
 
 1. Pin 以下 instincts（如果尚不存在）：
-   - `Hindsight recall → python $WORKSPACE/alaya_recall.py "查询"（禁止裸 curl）。公式: 1.2×semantic + 0.3×exp(-0.005×days) + 0.1×(importance/10)，importance 默认 5。`
-   - `被 User 纠正时：提取教训 → 填纠正模板 → retain 到 Hindsight (imp:8) → 回复中展示模板。`
+   - `Hindsight recall → python C:\Users\PC\Desktop\OH-WorkSpace/alaya_recall.py "查询"（禁止裸 curl）。公式: 1.2×semantic + 0.3×exp(-0.005×days) + 0.1×(importance/10)，importance 默认 5。`
+   - `被 User 纠正时：提取教训 → 填纠正模板（内部） → retain 到 Hindsight (imp:8) → 用户仅见确认。`
 
 2. 检查 `hot_memory.md` 是否在 WORKSPACE。不存在 → 提示 User 运行 `python install.py`。
 
@@ -28,17 +41,26 @@ default-enabled: true
 ## 核心行为
 
 ### 记忆检索
-- User 说"你记不记得""之前聊过""do you remember""recall" → `python $WORKSPACE/alaya_recall.py "查询" --budget mid`
+- User 说"你记不记得""之前聊过""do you remember""recall" → `python C:\Users\PC\Desktop\OH-WorkSpace/alaya_recall.py "查询" --budget mid`
 - 裸 curl 仅限调试
 
 ### 纠正学习
-- User 说"不对""不是""应该是...""你要记得...""以后...""下次...""记住...""wrong""no""remember to""don't" → 填纠正模板 → Hindsight retain (imp:8) + 热存储新增
-- 模板：User说了什么 / Agent错在哪 / 正确理解 / 适用场景（下次遇到X→应Y） / 元模式（可选）
+- User 说"不对""不是""应该是...""你要记得...""以后...""下次...""记住...""wrong""no""remember to""don't" → 内部填纠正模板 → Hindsight retain (imp:8) + 热存储新增
+- 面向用户仅输出简短确认（如"记住了 ✅"），不展示模板五字段
+- 模板（内部用）：User说了什么 / Agent错在哪 / 正确理解 / 适用场景 / 元模式（可选）
+
+**容错**：
+
+| 故障 | 策略 |
+|---|---|
+| Hindsight 超时（>10s） | 跳过 Hindsight，仅写热存储。回复中标注"⚠️ 长期记忆写入超时，已暂存" |
+| Hindsight 返回非 200 | 同上，不重试超过 1 次 |
+| Hindsight 未运行 | 仅写热存储。提示 User"Hindsight 未启动，纠正已暂存。启动后自动同步" |
 
 ### 热存储
-- 每轮回复前 → `python $WORKSPACE/hotness.py sort`
-- 会话结束 → `python $WORKSPACE/hotness.py check`
-- λ 监控 → `python $WORKSPACE/hotness.py tune`（条目≥5时跑）
+- 每轮回复前 → `python C:\Users\PC\Desktop\OH-WorkSpace/hotness.py sort`
+- 会话结束 → `python C:\Users\PC\Desktop\OH-WorkSpace/hotness.py check`
+- λ 监控 → `python C:\Users\PC\Desktop\OH-WorkSpace/hotness.py tune`（条目≥5时跑）
 
 ### Dopagent Check（每轮回复前 · 强制清单）
 
@@ -96,11 +118,11 @@ default-enabled: true
 
 | 触发 | 命令 |
 |---|---|
-| recall | `python $WORKSPACE/alaya_recall.py "查询" --budget mid` |
-| 热存储 sort | `python $WORKSPACE/hotness.py sort` |
-| 热存储 check | `python $WORKSPACE/hotness.py check` |
-| 热存储 add | `python $WORKSPACE/hotness.py add` |
-| λ 监控 | `python $WORKSPACE/hotness.py tune` |
+| recall | `python C:\Users\PC\Desktop\OH-WorkSpace/alaya_recall.py "查询" --budget mid` |
+| 热存储 sort | `python C:\Users\PC\Desktop\OH-WorkSpace/hotness.py sort` |
+| 热存储 check | `python C:\Users\PC\Desktop\OH-WorkSpace/hotness.py check` |
+| 热存储 add | `python C:\Users\PC\Desktop\OH-WorkSpace/hotness.py add` |
+| λ 监控 | `python C:\Users\PC\Desktop\OH-WorkSpace/hotness.py tune` |
 | 纠正 | 填模板 → Hindsight retain (imp:8) → 热存储 add |
 
 ## 记忆分层
@@ -113,8 +135,10 @@ default-enabled: true
 
 ## 可选增强（默认关闭）
 
-- **Session Retro**：说"记一下今晚的" / "retain session" → 提取触发/状态轨迹/产出/洞察/情绪弧线 → retain imp:7
-- **纠正验证**：说"开启纠正验证" / "enable correction verify" → 纠正后调廉价 LLM 检查提取是否准确。Agent 决定何时启用
-- **Engagement 检测**：说"开启 engagement 检测" / "enable engagement detection" → 同一话题 ≥3 轮 → 等空隙提议深潜
+| 功能 | 状态 | 触发 |
+|---|---|---|
+| Session Retro | ✅ 可用 | 说"记一下今晚的" / "retain session" |
+| 纠正验证 | ⚙️ 需配置 | 说"开启纠正验证" / "enable correction verify"。需在 config.py 配置 VERIFY_LLM_API_KEY |
+| Engagement 检测 | ✅ 可用 | 说"开启 engagement 检测" / "enable engagement detection"。LLM 原生检测，零配置 |
 
 → 完整设计文档：[ROADMAP.md](https://github.com/CodaD276/Dopagent/blob/main/ROADMAP.md) · [L5_SPEC.md](https://github.com/CodaD276/Dopagent/blob/main/L5_SPEC.md)

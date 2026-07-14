@@ -198,7 +198,7 @@ A: 🚧 Design complete, implementation pending. The core loop (correct→retain
 | Feature | Status |
 |---|---|
 | Warm storage promotion (hot→warm) | ✅ `hotness.py promote` auto-retains to Hindsight |
-| Correction verify (verify.py) | ✅ ready, requires VERIFY_LLM_API_KEY |
+| Correction verify (verify.py) | ⚙️ requires VERIFY_LLM_API_KEY |
 | Engagement signal | ✅ embedded in SKILL.md, LLM-native detection |
 | Cross-platform install scripts | ✅ `cross-install.py` supports 6 platforms |
 
