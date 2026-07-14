@@ -4,6 +4,8 @@ Dopagent's core is platform-agnostic — reasoning templates (Dopagent Check, co
 
 Dopagent 的核心与平台无关——推理模板（Dopagent Check、纠正模板、Propose）是纯 Markdown，Python 脚本是纯标准库。只有**加载方式**和**常驻上下文机制**需要适配。
 
+**HanaAgent 跨平台**：macOS / Windows / Linux 均支持。skills 目录统一为 `~/.hanako/skills/`，路径格式分别为 `/Users/用户名/.hanako/`（macOS）、`C:\Users\用户名\.hanako\`（Windows）、`/home/用户名/.hanako/`（Linux）。config_example.py 已注释三平台示例。
+
 ---
 
 ## Compatibility Matrix / 适配矩阵
