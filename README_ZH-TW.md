@@ -1,3 +1,17 @@
+# Dopagent
+
+你的 AI 助手每次被你糾正後，自動把教訓存進長期記憶。下次遇到類似場景，經驗自己浮上來。
+
+[![Stars](https://img.shields.io/github/stars/CodaD276/Dopagent?style=flat)](https://github.com/CodaD276/Dopagent/stargazers)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](PORTING.md)
+
+[简体中文](README.md) · [English](README_EN.md)
+
+[快速開始](#快速開始) · [功能介紹](#這個-skill-能做什麼) · [架構](#架構層次--architecture-layers) · [FAQ](#常見問題)
+
+---
+
 ## 這個 Skill 能做什麼
 
 你的 AI 助手每次被你糾正之後，自動把教訓存進長期記憶。下次遇到類似的場景，最相關的經驗自己浮上來——不靠運氣，靠一套檢索重排演算法。

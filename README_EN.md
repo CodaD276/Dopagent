@@ -1,3 +1,17 @@
+# Dopagent
+
+An AI agent that learns from your corrections
+
+[![Stars](https://img.shields.io/github/stars/CodaD276/Dopagent?style=flat)](https://github.com/CodaD276/Dopagent/stargazers)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](PORTING.md)
+
+[简体中文](README.md) · [繁體中文](README_ZH-TW.md)
+
+[Quick Start](#quick-start) · [Features](#what-this-skill-does) · [Architecture](#architecture-layers--架構層次) · [FAQ](#faq)
+
+---
+
 ## What This Skill Does
 
 Your AI agent automatically extracts lessons from every correction and stores them in long-term memory. Next time a similar scenario comes up, the most relevant experience surfaces — not by luck, by a retrieval algorithm.
