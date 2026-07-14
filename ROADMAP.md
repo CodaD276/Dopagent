@@ -81,7 +81,7 @@ Self-Learning Loop / 自我学习闭环      ███████████�
 
 3-Tier Memory / 三层记忆              ██████████████░░░░  70%
  Hot / 热存储                         ████████   hot_memory.md + hotness.py ✅
- Warm / 温存储                        ░░░░░░░░   designed, pending implementation
+ Warm / 温存储                        ████████   hotness.py promote auto-retains to Hindsight
  Cold / 冷存储                        ████████   Hindsight + Alaya ✅
 
 Dopagent Engine / 动机引擎             ██████████████░░░░  70%
@@ -89,7 +89,7 @@ Dopagent Engine / 动机引擎             ████████████�
  Propose template                     ████████   ✅ embedded in SKILL.md
  Profile switching                    ████████   ✅ Dopagent Check auto-switch
  Signals (engagement/surfacing)       ░░░░░░░░   designed, optional enhancement
- Correction verify                    ░░░░░░░░   designed, optional enhancement
+ Correction verify                    ████████   ✅ verify.py + config_example.py
 ```
 
 ## File Tree / 文件清单

@@ -45,3 +45,13 @@ HOT_MEMORY_MAX_SIZE = 50 * 1024  # 50 KB
 # 时间衰减系数（/小时）
 # 0.03 → ~24h 到 50%，~3 天到 10%
 HOTNESS_LAMBDA = 0.03
+
+# ──────────────────────────────────────
+# Optional: correction verification LLM
+# 可选：纠正验证用廉价 LLM
+# ──────────────────────────────────────
+# Uncomment to enable verify.py auto-check:
+# 取消注释以启用 verify.py 自动检查：
+# VERIFY_LLM_API_KEY = "sk-your-key"
+# VERIFY_LLM_ENDPOINT = "https://api.openai.com/v1/chat/completions"
+# VERIFY_LLM_MODEL = "gpt-3.5-turbo"

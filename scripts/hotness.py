@@ -250,20 +250,52 @@ def cmd_check():
 
 
 def cmd_promote():
-    """扫描 WARM 条目，建议 retain 到 Hindsight"""
+    """扫描条目，acess≥3 的自动 retain 到 Hindsight"""
     header, entries = parse_hot_file()
+
+    HINDSIGHT_URL = "http://127.0.0.1:9177/v1/default/banks/hermes/memories"
+    promoted = 0
 
     for e in entries:
         meta = extract_meta(e)
         if meta["access_count"] >= 3 and meta["hotness"] > 0.3:
-            # 提取一行摘要
-            first_line = e.split("\n")[0] if e else ""
-            print(f"→ 建议 retain: {first_line}")
-            print(f"  访问 {meta['access_count']} 次, hotness={meta['hotness']:.4f}")
-            # 生成 retain payload
-            text_line = next((l for l in e.split("\n") if l.startswith("- **")), "")
-            print(f"  payload: {text_line[:120]}")
-            print()
+            # 提取条目的核心文本（跳过 footer 行）
+            lines = [l for l in e.split("\n") if not l.startswith("_hotness:")]
+            text = "\n".join(lines).strip()
+
+            etype = meta.get("type", "insight")
+            payload = {
+                "items": [{
+                    "content": f"[promoted from hot storage] {text}",
+                    "context": f"hotness.py promote — {etype} promoted after {meta['access_count']} accesses",
+                    "tags": ["promoted", etype],
+                }],
+                "async": True,
+            }
+
+            import tempfile, subprocess
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8') as f:
+                json.dump(payload, f, ensure_ascii=False)
+                tmp = f.name
+
+            result = subprocess.run(
+                ["curl", "-s", "-X", "POST", HINDSIGHT_URL,
+                 "-H", "Content-Type: application/json",
+                 "--data-binary", f"@{tmp}", "--max-time", "10"],
+                capture_output=True, text=True, timeout=15
+            )
+            os.unlink(tmp)
+
+            if '"success":true' in result.stdout:
+                print(f"  ✅ retained: {meta['id']}")
+                promoted += 1
+            else:
+                print(f"  ❌ retain failed: {meta['id']} — {result.stdout[:100]}")
+
+    if promoted == 0:
+        print("  无条目符合 promote 条件（需 access ≥3 且 hotness > 0.3）")
+    else:
+        print(f"\n  {promoted} 条已 retain 到 Hindsight")
 
 
 def cmd_add():
