@@ -13,8 +13,8 @@ default-enabled: true
 
 ## 变量解析
 
-- `$WORKSPACE` = config.py 中的 WORKSPACE 值——alaya_recall.py、hotness.py、hot_memory.md 所在目录
-- 如果 `hot_memory.md` 不在 `$WORKSPACE` → 提示 User 运行 `python install.py`
+- `C:\Users\PC\Desktop\OH-WorkSpace` = config.py 中的 WORKSPACE 值——alaya_recall.py、hotness.py、hot_memory.md 所在目录
+- 如果 `hot_memory.md` 不在 `C:\Users\PC\Desktop\OH-WorkSpace` → 提示 User 运行 `python install.py`
 
 ## 输出边界（硬规则）
 

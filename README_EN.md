@@ -191,7 +191,18 @@ A: Hindsight's local embedding model is slow on first query (30-90s). Subsequent
 A: No. Correct the agent → auto-learning. The internals are transparent in daily use.
 
 **Q: When will correction verify / engagement detection be available?**  
-A: 🚧 Design complete, implementation pending. The core loop (correct→retain→Alaya recall) is fully functional now.
+A: Engagement detection is available now (✅). Correction verify requires VERIFY_LLM_API_KEY in config.py (⚙️).
+
+**Q: What if Hindsight goes down — will corrections be lost?**  
+A: No. Corrections are auto-saved to hot storage and synced when Hindsight recovers. Agent replies are never blocked waiting for Hindsight (>10s auto-skip).
+
+**Q: How do I set up the correction verify API key?**  
+A: Edit config.py, uncomment and fill in:
+```python
+VERIFY_LLM_API_KEY = "sk-your-key"
+VERIFY_LLM_ENDPOINT = "https://api.openai.com/v1/chat/completions"  # or compatible API
+VERIFY_LLM_MODEL = "gpt-3.5-turbo"  # cheaper is better, verification only
+```
 
 ## Planned
 
