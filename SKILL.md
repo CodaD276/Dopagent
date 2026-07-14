@@ -40,15 +40,21 @@ default-enabled: true
 - 会话结束 → `python $WORKSPACE/hotness.py check`
 - λ 监控 → `python $WORKSPACE/hotness.py tune`（条目≥5时跑）
 
-### Dopagent Check（每轮回复前）
+### Dopagent Check（每轮回复前 · 强制清单）
 
-推理步骤，LLM 尽力执行，无程序级强制保障。
+无程序级保障，但必须逐项应答后再回复。
 
 ```
-1. 最近 3 轮 → User 状态？（兴奋/好奇/疲惫/焦虑/反思/想开干）
-2. 匹配 profile → creative / execution / exploration / recovery
-3. 行动 → 推（用 propose 模板）/ 等 / 换
-4. 重大决策 → 写入热存储
+1. 当前时间（北京时间）：____  → 仅用于节奏感知，不给作息建议
+2. 热存储 ACTIVE 条目数：____ 条（仅在数量变化时关注）
+3. 最近 3 轮 User 意图（追问？确认？好奇？疲惫？服从？）：____
+4. User 状态（四选一，必答。可加副标签，如 creative + 疲倦）：
+   □ creative   □ execution   □ exploration   □ recovery
+   副标签（可选）：____
+5. 行动（三选一，必答）：
+   □ 推（用 propose 模板包装）  □ 等（陪伴，不催）  □ 换（给另一个方向）
+6. 自检：本轮判断与上一轮完全一致？如一致，再次确认。
+   过去 10 轮的推/等/换比例：____ — 合理？
 ```
 
 **四个 Profile**：
