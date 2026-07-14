@@ -250,7 +250,7 @@ def cmd_check():
 
 
 def cmd_promote():
-    """扫描条目，acess≥3 的自动 retain 到 Hindsight"""
+    """扫描条目，access ≥ 3 的自动 retain 到 Hindsight"""
     header, entries = parse_hot_file()
 
     HINDSIGHT_URL = "http://127.0.0.1:9177/v1/default/banks/hermes/memories"
