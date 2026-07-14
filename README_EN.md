@@ -1,16 +1,13 @@
-# Dopagent
+## What This Skill Does
 
-An AI agent that learns from your corrections
+Your AI agent automatically extracts lessons from every correction and stores them in long-term memory. Next time a similar scenario comes up, the most relevant experience surfaces — not by luck, by a retrieval algorithm.
 
-[![Stars](https://img.shields.io/github/stars/CodaD276/Dopagent?style=flat)](https://github.com/CodaD276/Dopagent/stargazers)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](PORTING.md)
+Memory alone isn't enough. The agent also needs to know **when to nudge you and when to stay quiet**. Dopagent runs four profiles — creative, execution, exploration, recovery — switching based on your state.
 
-[简体中文](README.md) · [繁體中文](README_ZH-TW.md)
+Everything runs locally. Python stdlib, zero external dependencies.
 
-[Quick Start](#quick-start) · [Architecture](#architecture-layers--架構層次) · [FAQ](#faq)
+> ⚠️ Dopagent Check is an LLM reasoning step — the agent makes a best effort each turn, but there is no program-level enforcement. The framework's reliability comes from the correction loop (correct→retain→Alaya recall). The motivation engine is an assistive layer.
 
----
 
 ## Quick Start
 
@@ -119,16 +116,6 @@ L4-L5 are not missing features — the framework is in place. Data accumulates t
 → [Full topology + completion status](ROADMAP.md)
 
 ---
-
-## What This Skill Does
-
-Your AI agent automatically extracts lessons from every correction and stores them in long-term memory. Next time a similar scenario comes up, the most relevant experience surfaces — not by luck, by a retrieval algorithm.
-
-Memory alone isn't enough. The agent also needs to know **when to nudge you and when to stay quiet**. Dopagent runs four profiles — creative, execution, exploration, recovery — switching based on your state.
-
-Everything runs locally. Python stdlib, zero external dependencies.
-
-> ⚠️ Dopagent Check is an LLM reasoning step — the agent makes a best effort each turn, but there is no program-level enforcement. The framework's reliability comes from the correction loop (correct→retain→Alaya recall). The motivation engine is an assistive layer.
 
 ## Why "Dopagent"
 
