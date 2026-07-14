@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """
-Dopagent · 安装脚本
+Dopagent · Install script / 安装脚本
+File system init + dependency verification. Agent-side config via SKILL.md bootstrap.
 文件系统初始化 + 依赖验证。Agent 侧配置由 SKILL.md bootstrap 完成。
 
-用法:
-  python install.py              # 完整安装
-  python install.py --dry-run    # 仅验证，不修改文件
-  python install.py --uninstall  # 回滚（移除补丁、清理热存储）
+Usage / 用法:
+  python install.py              # Full install / 完整安装
+  python install.py --dry-run    # Verify without modifying / 仅验证，不修改
+  python install.py --check      # Environment health check / 环境健康检查
+  python install.py --uninstall  # Rollback / 回滚
 """
 
 import sys
@@ -200,6 +202,98 @@ def sync_scripts():
 # 卸载
 # ═══════════════════════════════════════════════
 
+# ═══════════════════════════════════════════════
+# 环境检查
+# ═══════════════════════════════════════════════
+
+def check_environment():
+    """Pre-install health check — reports what's missing without modifying anything.
+    安装前健康检查——报告缺失项，不修改任何文件。"""
+    print("=" * 56)
+    print("  Dopagent · Environment Check / 环境检查")
+    print("=" * 56)
+    print()
+
+    results = []
+    all_ok = True
+
+    # 1. Python version
+    py_ver = sys.version_info
+    if py_ver >= (3, 10):
+        results.append(("Python 3.10+", "OK", f"{py_ver.major}.{py_ver.minor}.{py_ver.micro}"))
+    else:
+        results.append(("Python 3.10+", "FAIL", f"{py_ver.major}.{py_ver.minor} detected, upgrade required"))
+        all_ok = False
+
+    # 2. curl
+    if shutil.which(CURL):
+        results.append(("curl", "OK", shutil.which(CURL)))
+    else:
+        results.append(("curl", "FAIL", "not found in PATH"))
+        all_ok = False
+
+    # 3. Hindsight
+    try:
+        r = subprocess.run(
+            [CURL, "-s", "--connect-timeout", "5", f"{HINDSIGHT_URL}/health"],
+            capture_output=True, text=True, timeout=10
+        )
+        if "healthy" in r.stdout:
+            results.append(("Hindsight", "OK", HINDSIGHT_URL))
+        else:
+            results.append(("Hindsight", "WARN", f"{HINDSIGHT_URL} reachable but unhealthy"))
+    except Exception:
+        results.append(("Hindsight", "WARN", f"{HINDSIGHT_URL} unreachable — start the daemon before install"))
+
+    # 4. Workspace writable
+    if WORKSPACE.exists():
+        test_file = WORKSPACE / ".dopagent_test"
+        try:
+            test_file.write_text("test")
+            test_file.unlink()
+            results.append(("Workspace", "OK", str(WORKSPACE)))
+        except (OSError, PermissionError):
+            results.append(("Workspace", "FAIL", f"{WORKSPACE} not writable"))
+            all_ok = False
+    else:
+        try:
+            WORKSPACE.mkdir(parents=True, exist_ok=True)
+            results.append(("Workspace", "OK", f"{WORKSPACE} (created)"))
+        except (OSError, PermissionError):
+            results.append(("Workspace", "FAIL", f"{WORKSPACE} cannot be created"))
+            all_ok = False
+
+    # 5. Skills directory
+    if SKILLS_DIR.exists():
+        results.append(("Skills dir", "OK", str(SKILLS_DIR)))
+    else:
+        results.append(("Skills dir", "WARN", f"{SKILLS_DIR} not found — skill auto-install will skip"))
+
+    # 6. Config
+    config_path = PROJECT_ROOT / "config.py"
+    if config_path.exists():
+        results.append(("config.py", "OK", str(config_path)))
+    else:
+        results.append(("config.py", "WARN", f"not found — copy config_example.py to config.py first"))
+
+    # Print results
+    print(f"  {'Item':20s} {'Status':6s} {'Detail'}")
+    print(f"  {'-'*20} {'-'*6} {'-'*30}")
+    for item, status, detail in results:
+        sym = "✅" if status == "OK" else "⚠️ " if status == "WARN" else "❌"
+        print(f"  {item:20s} {sym:6s} {detail}")
+
+    print()
+    if all_ok:
+        print("  All checks passed. Ready to install: python install.py")
+        print("  所有检查通过。可以安装：python install.py")
+    else:
+        print("  Fix items marked FAIL before installing.")
+        print("  修复标记为 FAIL 的项目后重新安装。")
+    print()
+    return all_ok
+
+
 def uninstall():
     print("⚠️  卸载 Dopagent\n")
 
@@ -235,9 +329,13 @@ def main():
         uninstall()
         return
 
+    if "--check" in sys.argv:
+        check_environment()
+        return
+
     dry_run = "--dry-run" in sys.argv
     print("=" * 60)
-    print("  Dopagent · 安装")
+    print("  Dopagent · Install / 安装")
     print(f"  {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     print("=" * 60)
     print()
