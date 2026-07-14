@@ -101,6 +101,8 @@ After installation you're at **L1**. L0-L3 run automatically. L4-L5 activate whe
 | **L4** | Pattern Extraction · Lesson → Generalization | 🚧 Needs data | Auto after 50+ corrections |
 | **L5** | Meta-Learning · Symbolic Distill + Audit | 📐 Spec ready | Auto after L4 output |
 
+L4-L5 are not missing features — the framework is in place. Data accumulates through daily use. No manual trigger needed.
+
 **Optional** (manual opt-in):
 
 | Feature | Description | How to enable |
