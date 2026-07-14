@@ -72,24 +72,24 @@ graph TD
 
 ```
 Self-Learning Loop / 自我学习闭环      ████████████████░░░░  80%
- ① Detect / 检测                      ████████   correction signal ✅
- ② Diagnose / 诊断                    ████████   correction template pinned ✅
- ③ Write / 写入                       ████████   Hindsight retain ✅
- ④ Retrieve / 检索                    ████████   Alaya pipeline ✅
+ ① Detect / 检测                      ████████   ✅
+ ② Diagnose / 诊断                    ████████   ✅
+ ③ Write / 写入                       ████████   ✅
+ ④ Retrieve / 检索                    ████████   ✅
  ⑤ Generalize / 泛化                  ██░░░░░░   needs 50+ corrections
- ⑥ Meta-learn / 元学习                📐         L5_SPEC.md 设计完成
+ ⑥ Meta-learn / 元学习                📐         L5_SPEC.md complete
 
-3-Tier Memory / 三层记忆              ██████████████░░░░  70%
- Hot / 热存储                         ████████   hot_memory.md + hotness.py ✅
- Warm / 温存储                        ████████   hotness.py promote auto-retains to Hindsight
- Cold / 冷存储                        ████████   Hindsight + Alaya ✅
+3-Tier Memory / 三层记忆              ████████████████████  100%
+ Hot / 热存储                         ████████   ✅ hot_memory.md + hotness.py
+ Warm / 温存储                        ████████   ✅ promote auto-retains to Hindsight
+ Cold / 冷存储                        ████████   ✅ Hindsight + Alaya
 
-Dopagent Engine / 动机引擎             ██████████████░░░░  70%
- Profiles (4 modes)                   ████████   ✅ embedded in SKILL.md
- Propose template                     ████████   ✅ embedded in SKILL.md
- Profile switching                    ████████   ✅ Dopagent Check auto-switch
- Signals (engagement/surfacing)       ████████   ✅ embedded in SKILL.md
- Correction verify                    ████████   ✅ verify.py + config_example.py
+Dopagent Engine / 动机引擎             ████████████████████  100%
+ Profiles (4 modes)                   ████████   ✅ SKILL.md
+ Propose template                     ████████   ✅ SKILL.md
+ Profile switching                    ████████   ✅ Dopagent Check
+ Signals (engagement/surfacing)       ████████   ✅ SKILL.md (bilingual triggers)
+ Correction verify                    ████████   ✅ verify.py + config
 ```
 
 ## File Tree / 文件清单
@@ -122,12 +122,16 @@ dopagent/
 
 ## Next Steps / 下一步
 
-1. ~~Bootstrap (SKILL.md + install.py)~~ ✅
-2. ~~Sanitization~~ ✅ zero personal identifiers
-3. ~~L3: Propose + Profile switching~~ ✅
-4. ~~README + config layer~~ ✅ self-bootstrapping
-5. Correction verification (optional, designed / 已设计)
-6. Engagement signal (optional, designed / 已设计)
-7. Warm storage promotion logic / 温存储提炼逻辑
-8. ~~L5 spec~~ ✅ L5_SPEC.md (symbolic distillation + audit + safety + cost)
-9. Generalization — needs 50+ corrections / 泛化 · 等 50+ 纠正记录
+1. ~~Bootstrap~~ ✅ 2. ~~Sanitization~~ ✅ 3. ~~L3: Propose + Profiles~~ ✅
+4. ~~README + config~~ ✅ 5. ~~Correction verify~~ ✅ 6. ~~Engagement/Surfacing~~ ✅
+7. ~~Warm storage~~ ✅ 8. ~~L5 spec~~ ✅ 9. ~~Cross-platform install~~ ✅
+10. ~~Environment check~~ ✅
+
+---
+
+**Remaining / 待完成**
+
+| Item | Status |
+|---|---|
+| Generalization (L4 reflect) | ⏳ Needs 50+ correction records / 需 50+ 纠正记录 |
+| Meta-learning engine (L5) | 📐 L5_SPEC.md complete, awaits L4 output / 等 L4 产出 |

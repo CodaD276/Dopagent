@@ -176,7 +176,7 @@ graph LR
 | Hindsight | Local long-term memory service (port 9177). Stores corrections and mental models |
 | Alaya | Retrieval rerank script — ranks memories by semantic similarity + time decay + importance |
 | Hot Storage | `hot_memory.md` — short-term high-frequency memory, auto floats and sinks |
-| Warm Storage | Repeatedly validated patterns, pending promotion to long-term 🚧 planned |
+| Warm Storage | Repeatedly validated patterns, auto-promoted via `hotness.py promote` |
 | λ (lambda) | Time decay coefficient, controls memory cooldown speed |
 
 ## FAQ
