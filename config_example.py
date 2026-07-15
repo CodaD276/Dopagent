@@ -53,5 +53,5 @@ HOTNESS_LAMBDA = 0.03
 # Uncomment to enable verify.py auto-check:
 # 取消注释以启用 verify.py 自动检查：
 # VERIFY_LLM_API_KEY = "sk-your-key"
-# VERIFY_LLM_ENDPOINT = "https://api.openai.com/v1/chat/completions"
+# VERIFY_LLM_ENDPOINT = "https://api.openai.com/v1/chat/completions"  # 也支持 DeepSeek: https://api.deepseek.com/v1/chat/completions
 # VERIFY_LLM_MODEL = "gpt-3.5-turbo"
