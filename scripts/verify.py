@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 verify.py — 纠正验证
 调廉价 LLM 检查 Agent 提取的纠正模板是否准确反映了 User 的纠正意图。

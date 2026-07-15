@@ -186,7 +186,10 @@ def sync_scripts():
         src = PROJECT_ROOT / "scripts" / fname
         dest = WORKSPACE / fname
         if src.exists():
-            shutil.copy(src, dest)
+            content = src.read_bytes()
+            if content[:3] == b'\xef\xbb\xbf':
+                content = content[3:]
+            dest.write_bytes(content)
             synced.append(fname)
 
     # 替换 SKILL.md 中的 $WORKSPACE 占位符为实际路径（仅在安装目标）
