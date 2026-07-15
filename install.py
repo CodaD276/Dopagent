@@ -148,7 +148,10 @@ def install_skill():
     skill_dir.mkdir(parents=True, exist_ok=True)
     src = PROJECT_ROOT / "SKILL.md"
     dest = skill_dir / "SKILL.md"
-    shutil.copy(src, dest)
+    content = src.read_bytes()
+    if content[:3] == b'\xef\xbb\xbf':
+        content = content[3:]
+    dest.write_bytes(content)
     return f"SKILL.md → {skill_dir} ✅ 新会话自动加载（HanaAgent）"
 
 
