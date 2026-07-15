@@ -1,11 +1,6 @@
 ﻿---
 name: dopagent
-description: >-
-  User 个人助理的自我学习框架。Alaya 检索重排 + 三层记忆 + 纠正自动学习 + Dopagent 动机引擎。
-  MANDATORY TRIGGERS:
-  你记不记得, 回忆一下, 之前聊过, 之前是不是, 纠正, 你错了, 不对, 不是, 应该是, 你要记得, 记住, 以后, 下次, do you remember, recall, remember when, wrong, you are wrong, no that is not, remember to, don't.
-  SKIP:
-  纯闲聊无信息增量, 临时性操作指令, casual chat.
+description: "User 个人助理的自我学习框架。Alaya 检索重排 + 三层记忆 + 纠正自动学习 + Dopagent 动机引擎。MANDATORY TRIGGERS: 你记不记得, 回忆一下, 之前聊过, 之前是不是, 纠正, 你错了, 不对, 不是, 应该是, 你要记得, 记住, 以后, 下次, do you remember, recall, remember when, wrong, you are wrong, no that is not, remember to, don't. SKIP: 纯闲聊无信息增量, 临时性操作指令, casual chat."
 default-enabled: true
 ---
 
